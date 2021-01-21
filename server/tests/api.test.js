@@ -48,7 +48,7 @@ describe('Product API', () => {
   describe('GET /products/id/:productID', () => {
     it('should return a product with matching productID with status code of 200', async (done) => {
       database.getProductById.mockImplementation(async (id) => (
-        id.toString() === mockProduct.product_id ? mockProduct : null
+        id === mockProduct.product_id.toString() ? mockProduct : null
       ));
 
       request(app).get(`/api/products/id/${mockProduct.product_id}`)
@@ -61,7 +61,7 @@ describe('Product API', () => {
 
     it('should return a 404 status code if matching product is not found', async (done) => {
       database.getProductById.mockImplementation(async (id) => (
-        id.toString() === mockProduct.product_id ? mockProduct : null
+        id === mockProduct.product_id.toString() ? mockProduct : null
       ));
 
       request(app).get('/api/products/id/0')
