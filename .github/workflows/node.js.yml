@@ -22,6 +22,8 @@ jobs:
         node-version: '14.x' # optional
     - name: Install dependencies
       run: npm ci
+    - name: Add npm executables to PATH
+      run: export PATH="$PATH:$PWD/node_modules/.bin"
     - name: Run ESLint
       run: eslint . --ext .js,.jsx,.ts,.tsx
     - name: Run api tests
