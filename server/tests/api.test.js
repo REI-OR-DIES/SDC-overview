@@ -13,7 +13,7 @@ app.use('/api', api);
 //   figure out why --forceExit is needed to exit jest after running these tests
 
 describe('Product API', () => {
-  const mockProduct = {product_id: 42};
+  const mockProduct = { product_id: 42 };
   // const mockDB = jest.mock('../../database');
   // console.log(mockDB.mock);
 
@@ -47,11 +47,11 @@ describe('Product API', () => {
 
   describe('GET /products/id/:productID', () => {
     it('should return a product with matching productID with status code of 200', async (done) => {
-      database.getProductById.mockImplementation(async (id) => {
-        return id == mockProduct.product_id ? mockProduct : null;
-      });
+      database.getProductById.mockImplementation(async (id) => (
+        id.toString() === mockProduct.product_id ? mockProduct : null
+      ));
 
-      request(app).get('/api/products/id/' + mockProduct.product_id)
+      request(app).get(`/api/products/id/${mockProduct.product_id}`)
         .expect(200)
         .then((res) => {
           expect(res.body).toMatchObject(mockProduct);
@@ -60,9 +60,9 @@ describe('Product API', () => {
     });
 
     it('should return a 404 status code if matching product is not found', async (done) => {
-      database.getProductById.mockImplementation(async (id) => {
-        return id == mockProduct.product_id ? mockProduct : null;
-      });
+      database.getProductById.mockImplementation(async (id) => (
+        id.toString() === mockProduct.product_id ? mockProduct : null
+      ));
 
       request(app).get('/api/products/id/0')
         .expect(404)
@@ -71,7 +71,6 @@ describe('Product API', () => {
         });
     });
   });
-
 });
 
 // TODO-LOW:
@@ -80,9 +79,9 @@ describe('Product API', () => {
 afterAll(async (done) => {
   try {
     await mongoose.connection.close();
-    done()
+    done();
   } catch (error) {
     console.log(error);
-    done()
+    done();
   }
 });
