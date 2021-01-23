@@ -1,0 +1,40 @@
+body {
+  background-color:rgb(255, 255, 255);
+}
+
+.product-overview-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.slideshow-container {
+  width: 600px;
+}
+
+.slideshownav-container {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.slideshownav-thumbnail-list {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style-type: none;
+}
+
+.slideshownav-thumbnail {
+  width: 100px;
+}
+
+.rating-stars {
+  font-size: xx-large;
+}
+
+.rating-filled {
+  color: rgb(8, 98, 182);
+}
+
+.rating-unfilled {
+  color: gray;
+}
+
+.
