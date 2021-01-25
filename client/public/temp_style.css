@@ -5,36 +5,114 @@ body {
 .product-overview-container {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: space-between;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-family: 'Roboto', sans-serif;
 }
 
 .slideshow-container {
   width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .slideshownav-container {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: center;
 }
+
+.slideshownav-button {
+  padding: 20px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  font-size: x-large;
+}
+
 .slideshownav-thumbnail-list {
   display: flex;
   flex-wrap: nowrap;
   list-style-type: none;
+  padding: 0;
 }
 
-.slideshownav-thumbnail {
-  width: 100px;
+.slideshownav-thumbnail-image {
+  padding: 10px;
+  height: 100px;
+  cursor: pointer;
+  outline: none;
+}
+
+.slideshownav-thumbnail-selected {
+  border: 1px solid rgb(167, 167, 167);
+}
+
+.details-heading h1 {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  letter-spacing: -.015rem;
+  line-height: 1;
+}
+
+.brand-name {
+  color: #00718d;
+}
+
+.product-name {
+  color:rgb(112, 112, 112);
+}
+
+.price-current, .price-original {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 400;
+  font-size: x-large;
+}
+
+.price-current {
+  color: #00718d;
+}
+
+.price-original {
+  color:rgb(112, 112, 112);
+  text-decoration: line-through;
+  margin-left: 30px;
+}
+
+.price-savings {
+  display: block;
+  color: rgb(112, 112, 112);
+  font-size: .9em;
+}
+
+.details-rating-productid {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: nowrap;
 }
 
 .rating-stars {
-  font-size: xx-large;
+  font-size: x-large;
 }
 
-.rating-filled {
-  color: rgb(8, 98, 182);
+.rating-stars.filled {
+  color:  #00718d;
 }
 
-.rating-unfilled {
-  color: gray;
+.rating-stars.unfilled {
+  color: rgb(112, 112, 112);
 }
 
-.
+.rating-average, .rating-count {
+  margin-left: 10px;
+}
+
+.details-productid {
+  color:rgb(112, 112, 112);
+  margin-left: 30px;
+  margin-top: 10px;
+}
