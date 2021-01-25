@@ -17,14 +17,19 @@ const productSchema = mongoose.Schema({
   name: String,
   description: String,
   price: {
-    base_price: Number,
+    base: Number,
     discount: Number,
+    current: Number,
+  },
+  rating: {
+    stars: Number,
+    count: Number,
   },
   image_urls: [String],
   options: [{
-    color: String,
-    size: String,
-    inventory: Number,
+    color_name: String,
+    color_value: String,
+    sizes: [String],
   }],
 });
 
