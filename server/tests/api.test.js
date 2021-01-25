@@ -1,26 +1,20 @@
-const mongoose = require('mongoose');
 const request = require('supertest');
 const express = require('express');
 const api = require('../api');
 
-jest.mock('../../database');
-const database = require('../../database');
+jest.mock('../../database/models/Product');
+const Product = require('../../database/models/Product');
 
 const app = express();
 app.use('/api', api);
 
-// TODO-LOW:
-//   figure out why --forceExit is needed to exit jest after running these tests
-
 describe('Product API', () => {
   const mockProduct = { product_id: 42 };
-  // const mockDB = jest.mock('../../database');
-  // console.log(mockDB.mock);
 
   describe('GET /api/products/all', () => {
     it('returns an array of products with a status code of 200', async (done) => {
       const products = [mockProduct];
-      database.getAllProducts.mockResolvedValue(products);
+      Product.getAllProducts.mockResolvedValue(products);
 
       request(app).get('/api/products/all')
         .expect(200)
@@ -34,7 +28,7 @@ describe('Product API', () => {
 
   describe('GET /api/products/random', () => {
     it('GET /api/products/random returns a product with a status code of 200', async (done) => {
-      database.getRandomProduct.mockResolvedValue(mockProduct);
+      Product.getRandomProduct.mockResolvedValue(mockProduct);
 
       request(app).get('/api/products/random')
         .expect(200)
@@ -47,7 +41,7 @@ describe('Product API', () => {
 
   describe('GET /products/id/:productID', () => {
     it('should return a product with matching productID with status code of 200', async (done) => {
-      database.getProductById.mockImplementation(async (id) => (
+      Product.getProductById.mockImplementation(async (id) => (
         id === mockProduct.product_id.toString() ? mockProduct : null
       ));
 
@@ -60,7 +54,7 @@ describe('Product API', () => {
     });
 
     it('should return a 404 status code if matching product is not found', async (done) => {
-      database.getProductById.mockImplementation(async (id) => (
+      Product.getProductById.mockImplementation(async (id) => (
         id === mockProduct.product_id.toString() ? mockProduct : null
       ));
 
@@ -71,17 +65,4 @@ describe('Product API', () => {
         });
     });
   });
-});
-
-// TODO-LOW:
-//   Separate database connection from api
-//   Must disconnect from db here because it connects automatically when required
-afterAll(async (done) => {
-  try {
-    await mongoose.connection.close();
-    done();
-  } catch (error) {
-    console.log(error);
-    done();
-  }
 });

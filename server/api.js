@@ -1,5 +1,5 @@
 const express = require('express');
-const database = require('../database');
+const Product = require('../database/models/Product');
 
 const api = express.Router();
 
@@ -7,7 +7,7 @@ const api = express.Router();
 //    Correct status code for error to 500
 //    404 if product if product not returned
 api.get('/products/all', (req, res) => {
-  database.getAllProducts()
+  Product.getAllProducts()
     .then((products) => {
       res.send(products);
     })
@@ -18,12 +18,12 @@ api.get('/products/all', (req, res) => {
 //    Correct status code for error to 500
 //    404 if product if product not returned
 api.get('/products/random', async (req, res) => {
-  const product = await database.getRandomProduct();
+  const product = await Product.getRandomProduct();
   res.send(product);
 });
 
 api.get('/products/id/:productId(\\d+)', (req, res) => {
-  database.getProductById(req.params.productId)
+  Product.getProductById(req.params.productId)
     .then((product) => {
       if (product) {
         res.status(200).send(product);
