@@ -5,11 +5,11 @@ import Slideshow from './Slideshow';
 import Details from './Details';
 import ProductContext from './ProductContext';
 
-export default function ProductOverview({ port }) {
+export default function ProductOverview() {
   const [product, setProduct] = useState(null);
 
   function getProduct() {
-    axios.get(`http://localhost:${port}/api/products/random`)
+    axios.get('/api/products/random')
       .then((res) => {
         if (res.data) {
           setProduct(res.data);
@@ -34,11 +34,3 @@ export default function ProductOverview({ port }) {
     </div>
   );
 }
-
-ProductOverview.propTypes = {
-  port: PropTypes.number,
-};
-
-ProductOverview.defaultProps = {
-  port: 3000,
-};
