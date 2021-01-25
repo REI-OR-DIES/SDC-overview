@@ -116,3 +116,18 @@ body {
   margin-left: 30px;
   margin-top: 10px;
 }
+
+.options-container ul {
+  display: flex;
+  flex-wrap: nowrap;
+  list-style-type: none;
+}
+
+.options-container input[type="button"] {
+  border: 1px solid black;
+  cursor: pointer;
+  outline: none;
+  width: 60px;
+  height: 60px;
+  margin-left: 20px;
+}
