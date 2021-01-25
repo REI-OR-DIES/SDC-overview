@@ -15,7 +15,7 @@ export default function Price() {
       </span>
 
       <span className="price-savings">
-        {discount > 0 ? `Save $${savings} (${Math.floor(discount * 100)}%)` : ''}
+        {discount > 0 ? `Save $${savings.toFixed(2)} (${Math.floor(discount * 100)}%)` : ''}
       </span>
     </div>
   );

@@ -81,6 +81,7 @@ export default function OptionsForm() {
           type="text"
           className="options-quantity"
           value={quantity}
+          readOnly
         />
 
         <button type="button" onClick={() => changeQuantity(1)}>+</button>
