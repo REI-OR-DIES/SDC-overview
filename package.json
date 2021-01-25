@@ -7,7 +7,7 @@
     "start": "node ./server",
     "watch": "webpack serve --config ./webpack.config.js --mode development",
     "build": "webpack --config ./webpack.config.js --mode production",
-    "test:api": "jest server/tests --forceExit",
+    "test:api": "jest server/tests",
     "db:seed": "node ./database/seed.js"
   },
   "repository": {
@@ -46,6 +46,7 @@
   "dependencies": {
     "@babel/runtime": "^7.12.5",
     "axios": "^0.21.1",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "faker": "^5.1.0",
     "mongoose": "^5.11.12",
