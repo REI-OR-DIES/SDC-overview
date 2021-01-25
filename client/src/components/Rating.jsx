@@ -4,8 +4,8 @@ import ProductContext from './ProductContext';
 export default function Rating() {
   const { rating } = useContext(ProductContext);
   const starsRounded = Math.floor(rating.stars);
-  const filled = '*'.repeat(starsRounded);
-  const unfilled = '*'.repeat(5 - starsRounded);
+  const filled = '★'.repeat(starsRounded);
+  const unfilled = '★'.repeat(5 - starsRounded);
 
   return (
     <div className="rating-container">
