@@ -15,11 +15,11 @@ module.exports = {
     extensions: ['*', '.js', '.jsx'],
   },
   output: {
-    path: path.resolve(__dirname, './client/public/build'),
+    path: path.resolve(__dirname, './client/public'),
     filename: 'bundle.js',
   },
   devServer: {
-    publicPath: '/build/',
+    publicPath: '/',
     contentBase: path.resolve(__dirname, './client/public'),
   },
 };
