@@ -4,11 +4,13 @@ import Slideshow from './Slideshow';
 import Details from './Details';
 import ProductContext from './ProductContext';
 
+const url = 'http://localhost:3001';
+
 export default function ProductOverview() {
   const [product, setProduct] = useState(null);
 
   function getProduct() {
-    axios.get('/api/products/random')
+    axios.get(`${url}/api/products/random`)
       .then((res) => {
         if (res.data) {
           setProduct(res.data);
