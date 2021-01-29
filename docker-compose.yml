@@ -1,0 +1,20 @@
+version: "3.7"
+
+services:
+    prodmod-api:
+      build: ./
+      ports:
+        - "3001:3001"
+      depends_on:
+        - prodmod-db
+      links:
+        - prodmod-db
+      container_name: prodmod-api
+      volumes:
+        - .:/app
+
+    prodmod-db:
+      image: mongo
+      ports:
+        - "27017:27017"
+      container_name: prodmod-db

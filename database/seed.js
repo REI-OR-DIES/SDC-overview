@@ -80,8 +80,13 @@ function productGenerator() {
   const generateProduct = productGenerator();
   const numProductsToGenerate = process.argv[2] || 10;
   const products = [];
+  let existingProducts;
 
-  const existingProducts = await Product.getAllProducts();
+  try {
+    existingProducts = await Product.getAllProducts();
+  } catch (e) {
+    console.log(e);
+  }
 
   if (existingProducts) {
     console.log(`Removing ${existingProducts.length} existing products..`);
