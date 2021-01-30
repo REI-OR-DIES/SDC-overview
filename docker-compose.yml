@@ -4,7 +4,7 @@ services:
     prodmod-api:
       image: mikeetree/gar-fec-productoverview
       ports:
-        - "3001:3001"
+        - "80:3001"
       depends_on:
         - prodmod-db
       links:

@@ -4,7 +4,7 @@ import Slideshow from './Slideshow';
 import Details from './Details';
 import ProductContext from './ProductContext';
 
-const url = 'http://18.220.65.198:3001';
+const url = 'http://18.220.65.198:80';
 
 export default function ProductOverview() {
   const [product, setProduct] = useState(null);
