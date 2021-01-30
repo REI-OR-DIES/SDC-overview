@@ -1,8 +1,7 @@
 FROM node:14-alpine
 
 WORKDIR /app
-COPY package.json app/package.json
-RUN npm install
 COPY . /app
+RUN npm install
 EXPOSE 3001
-CMD ["node", "server", "3001"]
+ENTRYPOINT ["node", "server", "3001"]
