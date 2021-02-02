@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+    prodmod-api:
+      image: mikeetree/gar-fec-productoverview
+      ports:
+        - "80:3001"
+      depends_on:
+        - prodmod-db
+      links:
+        - prodmod-db
+      container_name: prodmod-api
+
+    prodmod-db:
+      image: mongo
+      ports:
+        - "27017:27017"
+      container_name: prodmod-db
