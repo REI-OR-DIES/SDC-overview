@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server",
-    "watch": "webpack serve --config ./webpack.config.js --mode development",
+    "start": "nodemon ./server",
+    "watch": "webpack serve --config ./webpack.config.js --mode development -w",
     "build": "webpack --config ./webpack.config.js --mode production",
     "test:api": "jest server/tests",
     "db:seed": "node ./database/seed.js"
