@@ -1,5 +1,5 @@
 {
-  "name": "GAR-FEC-Product-Overview",
+  "name": "SDC-Overview",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,15 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/General-Assembly-Rejects/GAR-FEC-Product-Overview.git"
+    "url": "git+https://github.com/REI-OR-DIES/SDC-overview.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ganzfriend",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/General-Assembly-Rejects/GAR-FEC-Product-Overview/issues"
-  },
-  "homepage": "https://github.com/General-Assembly-Rejects/GAR-FEC-Product-Overview#readme",
+  "homepage": "https://github.com/REI-OR-DIES/SDC-overview#readme",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-transform-runtime": "^7.12.10",

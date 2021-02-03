@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const uri = 'mongodb://prodmod-db:27017/fec-productoverview';
+const uri = process.env.MONGODBURL || 'mongodb://localhost/sdc-overview';
 
 let db;
 
