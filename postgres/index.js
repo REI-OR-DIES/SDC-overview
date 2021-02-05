@@ -7,3 +7,6 @@ const pool = new Pool({
   password: 'password',
   port: 5432,
 });
+
+module.exports = pool;
+/* figure out how to establish connection in order to run seed from generated data! */

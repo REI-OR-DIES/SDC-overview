@@ -9,16 +9,14 @@ CREATE TABLE IF NOT EXISTS products (
   brand_name TEXT NOT NULL,
   name TEXT NOT NULL,
   description TEXT,
-  base_price INT NOT NULL,
-  discount INT,
-  current INT NOT NULL,
-  rating_stars SMALLINT,
-  rating_count SMALLINT,
+  price JSONB,
+  rating JSONB,
   options JSONB
 );
 
 CREATE TABLE IF NOT EXISTS images (
-  product_id INT NOT NULL PRIMARY KEY,
-  image_urls TEXT[],
+  image_id BIGSERIAL NOT NULL PRIMARY KEY,
+  product_id INT NOT NULL,
+  image_url TEXT,
   FOREIGN KEY(product_id) REFERENCES products(product_id)
 );
