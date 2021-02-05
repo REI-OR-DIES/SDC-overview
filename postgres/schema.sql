@@ -1,10 +1,10 @@
-DROP DATABASE sdc-overview
+DROP DATABASE IF EXISTS sdc_overview;
 
-CREATE DATABASE sdc-overview
+CREATE DATABASE sdc_overview;
 
-USE sdc-overview
+\c sdc_overview;
 
-CREATE TABLE products (
+CREATE TABLE IF NOT EXISTS products (
   product_id BIGSERIAL NOT NULL PRIMARY KEY,
   brand_name TEXT NOT NULL,
   name TEXT NOT NULL,
@@ -13,19 +13,12 @@ CREATE TABLE products (
   discount INT,
   current INT NOT NULL,
   rating_stars SMALLINT,
-  rating_count SMALLINT
+  rating_count SMALLINT,
+  options JSONB
 );
 
-CREATE TABLE images (
+CREATE TABLE IF NOT EXISTS images (
   product_id INT NOT NULL PRIMARY KEY,
-  image_urls TEXT[]
-  FOREIGN KEY(product_id) REFERENCES products(product_id)
-);
-
-CREATE TABLE options (
-  product_id INT NOT NULL PRIMARY KEY,
-  color_name TEXT,
-  color_value TEXT,
-  sizes TEXT[],
+  image_urls TEXT[],
   FOREIGN KEY(product_id) REFERENCES products(product_id)
 );

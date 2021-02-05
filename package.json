@@ -8,6 +8,7 @@
     "watch": "webpack serve --config ./webpack.config.js --mode development -w",
     "build": "webpack --config ./webpack.config.js --mode production",
     "test:api": "jest server/tests",
+    "seed": "psql root -d postgres -h localhost -f /home/melissa_ganzfried/hackreactor/SDC-overview/postgres/schema.sql",
     "db:seed": "node ./database/seed.js"
   },
   "repository": {
