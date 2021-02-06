@@ -71,16 +71,14 @@ function productGenerator() {
 
 function imagesGenerator() {
   const imageSet = arrayOfRandomLengthFrom(2, 5, () => faker.image.imageUrl(240, 440, 'fashion', true));
-  /*
-  one image set (one record) will be a string of urls, separated by
-  a comma, with no space.
-  example: 'str1,str2,str3'
-   */
-  return imageSet.join();
+  const image = {
+    image_url: imageSet.join(),
+  };
+  return image;
 }
 
 (async () => {
-  const numProductsToGenerate = process.argv[2] || 1;
+  const numProductsToGenerate = process.argv[2] || 10;
   const products = [];
   const images = [];
 
@@ -98,10 +96,3 @@ function imagesGenerator() {
   const imagesWriter = fs.createWriteStream('images.csv');
   imagesWriter.write(imagesInCsv);
 })();
-
-/*
-let userHeader = ["username", "age", "email", "location"];
-const usersInCsv = new Parser({ fields: userHeader }).parse(userData);
-let usersWriter = fs.createWriteStream('users.csv');
-usersWriter.write(usersInCsv);
-*/
