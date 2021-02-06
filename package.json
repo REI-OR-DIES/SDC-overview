@@ -8,8 +8,9 @@
     "watch": "webpack serve --config ./webpack.config.js --mode development -w",
     "build": "webpack --config ./webpack.config.js --mode production",
     "test:api": "jest server/tests",
-    "db:setup": "psql root -d postgres -h localhost -f /home/melissa_ganzfried/hackreactor/SDC-overview/postgres/schema.sql",
-    "seed": "node ./postgres/data.js",
+    "generate": "node ./postgres/generateData.js",
+    "db:setup": "psql postgres -d postgres -h localhost -f /home/melissa_ganzfried/hackreactor/SDC-overview/postgres/schema.sql",
+    "seed": "node ./postgres/seed.js",
     "db:seed": "node ./database/seed.js"
   },
   "repository": {
@@ -48,6 +49,7 @@
     "@babel/runtime": "^7.12.5",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
+    "csv-parse": "^4.15.1",
     "express": "^4.17.1",
     "faker": "^5.1.0",
     "json2csv": "^5.0.6",
