@@ -78,7 +78,7 @@ function imagesGenerator() {
 }
 
 (async () => {
-  const numProductsToGenerate = process.argv[2] || 10;
+  const numProductsToGenerate = process.argv[2] || 10000000;
   const products = [];
   const images = [];
 

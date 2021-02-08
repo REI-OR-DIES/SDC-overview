@@ -1,13 +1,29 @@
-const pool = require('./index.js');
-/* refactor this example function to match my data */
-const createProduct = (body) => new Promise((resolve, reject) => {
-  const { name, email } = body;
-  pool.query('INSERT INTO products (name, email) VALUES ($1, $2) RETURNING *', [name, email], (error, results) => {
-    if (error) {
-      reject(error);
-    }
-    resolve(`A new merchant has been added added: ${results.rows[0]}`);
-  });
+/* eslint-disable max-len */
+const { Pool } = require('pg');
+
+const pool = new Pool({
+  user: 'postgres',
+  host: 'localhost',
+  database: 'sdc_overview',
+  password: 'password',
+  port: '5432',
 });
 
-/* break data.csv into an array and call createProduct on every element */
+pool.query("COPY products FROM '/home/melissa_ganzfried/hackreactor/SDC-overview/postgres/products.csv' DELIMITER ',' CSV HEADER;")
+  .then(() => pool.query('ALTER TABLE products ADD COLUMN products_id BIGSERIAL PRIMARY KEY;'))
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+pool.query("COPY images FROM '/home/melissa_ganzfried/hackreactor/SDC-overview/postgres/images.csv' DELIMITER ',' CSV HEADER;")
+  .then(() => pool.query('ALTER TABLE images ADD COLUMN image_id BIGSERIAL PRIMARY KEY;'))
+  .then((res) => {
+    console.log(res);
+    pool.end();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
