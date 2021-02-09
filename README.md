@@ -7,7 +7,7 @@
 - `npm run db:seed [x]` to seed the database with fake data, where `x` is the desired number of entries
 - `npm start [port]` to start the server where `port` is desired port number (defaults to 3001)
 - to be continued...
-- here's a change
+- here's a change again
 
 ## API Methods:
 - GET /api/products/id/x
