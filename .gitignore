@@ -3,3 +3,6 @@ bundle.js*
 *.csv
 postgres/images.csv
 postgres/products.csv
+
+newrelic.js
+newrelic_agent.log
