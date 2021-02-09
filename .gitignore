@@ -1,3 +1,5 @@
 node_modules
 bundle.js*
 *.csv
+postgres/images.csv
+postgres/products.csv
