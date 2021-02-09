@@ -1,39 +1,21 @@
+/* eslint-disable arrow-parens */
 const express = require('express');
-const Product = require('../database/models/Product');
+const db = require('../postgres/db');
 
 const api = express.Router();
-
-// TODO-MED:
-//    Correct status code for error to 500
-//    404 if product if product not returned
-api.get('/products/all', (req, res) => {
-  Product.getAllProducts()
-    .then((products) => {
-      res.send(products);
-    })
-    .catch(() => res.status(404).end());
-});
-
-// TODO-MED:
-//    Correct status code for error to 500
-//    404 if product if product not returned
-api.get('/products/random', async (req, res) => {
-  const product = await Product.getRandomProduct();
-  res.send(product);
-});
+// TODO format response body to send back what the front end is looking for (product AND images)
 
 api.get('/products/id/:productId(\\d+)', (req, res) => {
-  Product.getProductById(req.params.productId)
+  db.getProductByIdOrRandom(req.params.productId)
     .then((product) => {
       if (product) {
-        res.status(200).send(product);
+        res.status(200).send(product.rows);
       } else {
         res.status(404).end();
       }
     })
     .catch((e) => {
-      console.log(e);
-      res.status(500).end();
+      res.status(500).send(e);
     });
 });
 

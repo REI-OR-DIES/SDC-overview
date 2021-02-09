@@ -1,6 +1,10 @@
+/* eslint-disable no-plusplus */
+/* eslint-disable no-var */
+/* eslint-disable vars-on-top */
 /* this file is for generating fake data and writing it to the data.csv file */
 const faker = require('faker');
-const { Parser } = require('json2csv');
+const path = require('path');
+const { parse } = require('json2csv');
 const fs = require('fs');
 
 const randomRange = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
@@ -76,23 +80,24 @@ function imagesGenerator() {
   };
   return image;
 }
+// manually created csv files and added headers in
+// write function no longer does anything to check if file exists (fs.existsSync)
+// fields are not added conditionally, since they're already present in the file
+const write = async (fileName, data) => {
+  const file = path.join(__dirname, `${fileName}`);
+  const rows = await parse(data, { header: false });
+  fs.appendFileSync(file, rows);
+  fs.appendFileSync(file, '\r\n');
+};
 
-(async () => {
-  const numProductsToGenerate = process.argv[2] || 10000000;
-  const products = [];
-  const images = [];
+var numProductsToGenerate = process.argv[2] || 5;
 
-  for (let i = 0; i < numProductsToGenerate; i += 1) {
-    products.push(productGenerator());
-    images.push(imagesGenerator());
-  }
-  const productsHeader = ['brand_name', 'name', 'description', 'price', 'rating', 'options'];
-  const productsInCsv = new Parser({ fields: productsHeader }).parse(products);
-  const productsWriter = fs.createWriteStream('products.csv');
-  productsWriter.write(productsInCsv);
+while (numProductsToGenerate > 0) {
+  var products = productGenerator();
+  write('products.csv', products);
 
-  const imagesHeader = ['image_url'];
-  const imagesInCsv = new Parser({ fields: imagesHeader }).parse(images);
-  const imagesWriter = fs.createWriteStream('images.csv');
-  imagesWriter.write(imagesInCsv);
-})();
+  var images = imagesGenerator();
+  write('images.csv', images);
+
+  numProductsToGenerate--;
+}

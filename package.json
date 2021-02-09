@@ -1,11 +1,11 @@
 {
-  "name": "SDC-Overview",
+  "name": "sdc-overview",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./server",
-    "watch": "webpack serve --config ./webpack.config.js --mode development -w",
+    "watch": "webpack --config ./webpack.config.js --mode development -w",
     "build": "webpack --config ./webpack.config.js --mode production",
     "test:api": "jest server/tests",
     "generate": "node ./postgres/generateData.js",
@@ -47,6 +47,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
+    "@newrelic/native-metrics": "^6.0.0",
     "axios": "^0.21.1",
     "cors": "^2.8.5",
     "csv-parse": "^4.15.1",
@@ -54,6 +55,7 @@
     "faker": "^5.1.0",
     "json2csv": "^5.0.6",
     "mongoose": "^5.11.12",
+    "newrelic": "^7.1.1",
     "pg": "^8.5.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",

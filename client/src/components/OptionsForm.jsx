@@ -23,7 +23,7 @@ export default function OptionsForm() {
           alt={colorName}
           onClick={() => {
             setCurrentOption(i);
-            setCurrentSize(options[i].sizes[0]);
+            setCurrentSize(option.sizes[0]);
           }}
           style={{ backgroundColor: colorVal }}
         />
