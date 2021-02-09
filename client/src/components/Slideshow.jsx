@@ -9,7 +9,8 @@ export default function Slideshow() {
   const product = useContext(ProductContext);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const imageList = product.image_urls.map((imageUrl, i) => {
+  const imageList = product.image_url.split(',');
+  const allImages = imageList.map((imageUrl, i) => {
     const className = (i === currentIndex)
       ? 'slideshownav-thumbnail-selected'
       : 'slideshownav-thumbnail';
@@ -30,8 +31,8 @@ export default function Slideshow() {
   function page(direction) {
     let next = currentIndex + direction;
     if (next < 0) {
-      next = product.image_urls.length - 1;
-    } else if (next >= product.image_urls.length) {
+      next = imageList.length - 1;
+    } else if (next >= imageList.length) {
       next = 0;
     }
     setCurrentIndex(next);
@@ -41,7 +42,7 @@ export default function Slideshow() {
     <div className="slideshow-container">
       <img
         className="slideshow-slide"
-        src={product.image_urls[currentIndex]}
+        src={imageList[currentIndex]}
         alt={product.name}
       />
 
@@ -55,7 +56,7 @@ export default function Slideshow() {
         </button>
 
         <ul className="slideshownav-thumbnail-list">
-          {imageList}
+          {allImages}
         </ul>
 
         <button

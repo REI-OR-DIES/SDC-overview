@@ -1,9 +1,13 @@
+/* eslint-disable radix */
 import React, { useContext } from 'react';
 import ProductContext from './ProductContext';
 
 export default function Price() {
   const product = useContext(ProductContext);
-  const { base, discount, current } = product.price;
+  let { base, discount, current } = product.price;
+  base = parseInt(base);
+  discount = parseInt(discount);
+  current = parseInt(current);
   const savings = base - current;
 
   return (
