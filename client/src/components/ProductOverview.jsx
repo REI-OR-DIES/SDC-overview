@@ -14,7 +14,8 @@ export default function ProductOverview() {
   const [id, setId] = useState(1);
 
   function getProduct() {
-    const paramId = parseInt(id) > 0 ? id : 1;
+    let paramId = parseInt(id) > 0 ? id : 1;
+    paramId = parseInt(paramId) < 10000001 ? paramId : 10000000;
     axios.get(`${url}/api/products/id/${paramId}`)
       .then((res) => {
         console.log(res);
