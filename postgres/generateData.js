@@ -91,7 +91,6 @@ const write = async (fileName, data) => {
 };
 
 var numProductsToGenerate = process.argv[2] || 5;
-
 while (numProductsToGenerate > 0) {
   var products = productGenerator();
   write('products.csv', products);

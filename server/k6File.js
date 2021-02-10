@@ -7,6 +7,6 @@ export const options = {
 };
 
 export default function () {
-  http.get(`http://localhost:3001/api/products/id/${Math.ceil(Math.random() * 10000000)}`);
+  http.get(`http://54.193.90.100:3001/api/products/id/${Math.ceil(Math.random() * 10000000)}`);
   sleep(1);
 }

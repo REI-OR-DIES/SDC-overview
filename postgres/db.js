@@ -6,7 +6,7 @@ const port = '5432';
 
 const pool = new Pool({
   user: 'postgres',
-  host: 'localhost',
+  host: 'db',
   database: 'sdc_overview',
   password: 'password',
   port,
