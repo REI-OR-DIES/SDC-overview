@@ -3,11 +3,11 @@
 ## Instructions:
 - fork (optional) and clone this repo
 - `npm install`
-- ensure mongodb is installed and running on your machine
-- `npm run db:seed [x]` to seed the database with fake data, where `x` is the desired number of entries
+- ensure postgresql is installed and running on your machine
+- `npm run generate [x]` to save fake data in csv files, where `x` is the desired number of entries
+- `npm run seed` to seed the database with the fake data from products.csv and images.csv
 - `npm start [port]` to start the server where `port` is desired port number (defaults to 3001)
 - to be continued...
-- here's a change again
 
 ## API Methods:
 - GET /api/products/id/x
