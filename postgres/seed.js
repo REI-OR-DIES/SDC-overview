@@ -22,7 +22,7 @@ pool.query(productsQuery)
 // create images table from images csv file
 // then add auto-incrementing id column in that table
 const imagesFile = path.join(__dirname, '/images.csv');
-const imagesQuery = `\copy products FROM '${imagesFile}' DELIMITER ',' CSV HEADER;`;
+const imagesQuery = `\copy images FROM '${imagesFile}' DELIMITER ',' CSV HEADER;`;
 pool.query(imagesQuery)
   .then(() => pool.query('ALTER TABLE images ADD COLUMN image_id BIGSERIAL PRIMARY KEY;'))
   .then((res) => console.log(res))
