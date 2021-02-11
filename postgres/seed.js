@@ -12,8 +12,8 @@ const pool = new Pool({
 
 // create products table from products csv file
 // then add auto-incrementing id column in that table
-// const productsFile = path.join(__dirname, 'products.csv');
-const productsQuery = 'COPY products FROM \'./products.csv\' DELIMITER \',\' CSV HEADER;';
+const productsFile = path.join(__dirname, '/products.csv');
+const productsQuery = `COPY products FROM '${productsFile}' DELIMITER ',' CSV HEADER;`;
 pool.query(productsQuery)
   .then(() => pool.query('ALTER TABLE products ADD COLUMN products_id BIGSERIAL PRIMARY KEY;'))
   .then((res) => console.log(res))
@@ -21,8 +21,8 @@ pool.query(productsQuery)
 
 // create images table from images csv file
 // then add auto-incrementing id column in that table
-// const imagesFile = path.join(__dirname, 'images.csv');
-const imagesQuery = 'COPY products FROM \'./images.csv\' DELIMITER \',\' CSV HEADER;';
+const imagesFile = path.join(__dirname, '/images.csv');
+const imagesQuery = `COPY products FROM '${imagesFile}' DELIMITER ',' CSV HEADER;`;
 pool.query(imagesQuery)
   .then(() => pool.query('ALTER TABLE images ADD COLUMN image_id BIGSERIAL PRIMARY KEY;'))
   .then((res) => console.log(res))
