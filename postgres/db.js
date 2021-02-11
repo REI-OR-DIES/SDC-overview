@@ -6,7 +6,7 @@ const port = '5432';
 
 const pool = new Pool({
   user: 'postgres',
-  host: 'ec2-54-215-151-110.us-west-1.compute.amazonaws.com',
+  host: 'sdc-db.c1pifngn04pm.us-west-1.rds.amazonaws.com',
   database: 'sdc_overview',
   password: 'password',
   port,
