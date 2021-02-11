@@ -10,7 +10,7 @@
     "test:api": "jest server/tests",
     "headers": "node ./postgres/generateHeaders.js",
     "generate": "node ./postgres/generateData.js",
-    "db:setup": "psql postgres -d postgres -h http://54.215.151.110 -f /postgres/schema.sql",
+    "db:setup": "psql postgres -d postgres -h ec2-54-215-151-110.us-west-1.compute.amazonaws.com -f /postgres/schema.sql",
     "seed": "node ./postgres/seed.js",
     "db:seed": "node ./database/seed.js"
   },
