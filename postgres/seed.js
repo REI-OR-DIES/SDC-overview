@@ -13,6 +13,7 @@ const pool = new Pool({
 // create products table from products csv file
 // then add auto-incrementing id column in that table
 const productsFile = path.join(__dirname, 'products.csv');
+console.log(productsFile);
 const productsQuery = `\copy products FROM '${productsFile}' DELIMITER ',' CSV HEADER;`;
 pool.query(productsQuery)
   .then(() => pool.query('ALTER TABLE products ADD COLUMN products_id BIGSERIAL PRIMARY KEY;'))
