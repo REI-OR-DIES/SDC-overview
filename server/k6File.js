@@ -7,6 +7,6 @@ export const options = {
 };
 
 export default function () {
-  http.get(`http://54.215.151.110:3001/api/products/id/${Math.ceil(Math.random() * 10000000)}`);
+  http.get(`http://54.215.151.110:3001/api/products/id/${Math.ceil(Math.random() * 5000000)}`);
   sleep(1);
 }
